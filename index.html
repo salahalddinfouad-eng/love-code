@@ -1,16 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Forever</title>
-</head>
-<body style="background:black; color:white; text-align:center; font-size:30px;">
+<meta charset="UTF-8">
+<title>Forever ♾️</title>
 
-<script>
-for(let i = 0; i < 1000; i++){
-    document.write("I love you haneeeeen<br>");
+<style>
+body{
+    margin:0;
+    background:black;
+    overflow:hidden;
+    color:white;
+    font-family:Arial;
+    text-align:center;
 }
 
-document.write("<br>Forever! ♾️");
+.container{
+    position:absolute;
+    width:100%;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.love{
+    font-size:40px;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px pink;
+    }
+    to{
+        text-shadow:0 0 30px red;
+    }
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div id="text"></div>
+</div>
+
+<script>
+const text = document.getElementById("text");
+
+for(let i=0;i<1000;i++){
+    text.innerHTML += '<div class="love">I love you haneeeeen ❤️</div>';
+}
+
+text.innerHTML += "<br><h1>Forever ♾️</h1>";
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = Math.random()*30 + 20 + "px";
+    heart.style.animationDuration = Math.random()*3 + 2 + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },5000);
+}
+
+setInterval(createHeart,200);
 </script>
 
 </body>
